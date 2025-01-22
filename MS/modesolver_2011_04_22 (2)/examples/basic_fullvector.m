@@ -2,7 +2,7 @@
 % fundamental TE and TM eigenmodes of an example 3-layer ridge
 % waveguide using the full-vector eigenmode solver.  
 % shows Transvere Electric and Transvers Magnetic Modes  
-set(0, 'DefaultFigureWindowStyle', 'docked')
+set(0, 'DefaultFigureWindowStyle', 'docked') % Put the figures all in 1 window
 % Refractive indices:
 n1 = 3.34;          % Lower cladding
 n2 = 3.44;          % Core
@@ -23,7 +23,7 @@ dx = 0.0125;        % grid size (horizontal)
 dy = 0.0125;        % grid size (vertical)
 
 lambda = 1.55;      % vacuum wavelength
-nmodes = 10;         % number of modes to compute
+nmodes = 10;         % number of modes to compute - set to ten as part of part 1
 
 [x,y,xc,yc,nx,ny,eps,edges] = waveguidemesh([n1,n2,n3],[h1,h2,h3],rh,rw,side,dx,dy); 
 
@@ -33,7 +33,7 @@ nmodes = 10;         % number of modes to compute
 
 fprintf(1,'neff = %.6f\n',neff);
 
-for i = 1:nmodes
+for i = 1:nmodes %loop through all the modes for TE
     figure(i);
     subplot(1,2,1);
     contourmode(x,y,Hx(:,:,i));
@@ -47,7 +47,7 @@ for i = 1:nmodes
 end
     % Next consider the fundamental TM mode
     % (same calculation, but with opposite symmetry)
-for i = 1:nmodes
+for i = 1:nmodes % loop through all the modes for TM
     [Hx,Hy,neff] = wgmodes(lambda,n2,nmodes,dx,dy,eps,'000S');
     
     fprintf(1,'neff = %.6f\n',neff);

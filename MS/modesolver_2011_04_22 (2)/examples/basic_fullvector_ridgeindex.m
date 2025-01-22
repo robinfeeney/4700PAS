@@ -4,7 +4,7 @@
 % shows Transvere Electric and Transvers Magnetic Modes  
 set(0, 'DefaultFigureWindowStyle', 'docked')
 
-for i = 1:10 %loop to help adjust ridge halfwidth
+for i = 1:10 %loop to help adjust ridge index
     % Refractive indices:
     n1 = 3.34;          % Lower cladding
     n2(i) = 3.44 - (i-1)*0.015          % Core
@@ -27,11 +27,11 @@ for i = 1:10 %loop to help adjust ridge halfwidth
     lambda = 1.55;      % vacuum wavelength
     nmodes = 1;         % number of modes to compute
     
-    [x,y,xc,yc,nx,ny,eps,edges] = waveguidemesh([n1,n2(i),n3],[h1,h2,h3],rh,rw,side,dx,dy); 
+    [x,y,xc,yc,nx,ny,eps,edges] = waveguidemesh([n1,n2(i),n3],[h1,h2,h3],rh,rw,side,dx,dy); % instead of n2 its n2(i)
     
     % First consider the fundamental TE mode:
     
-    [Hx,Hy,neffTE(i)] = wgmodes(lambda,n2(i),1,dx,dy,eps,'000A');
+    [Hx,Hy,neffTE(i)] = wgmodes(lambda,n2(i),1,dx,dy,eps,'000A'); % instead of n2 its n2(i)
     
     fprintf(1,'neff = %.6f\n',neff);
 
@@ -49,6 +49,6 @@ end
 
 figure
 plot(n2, neffTE); hold on
-xlabel('ridge halfwidth');
+xlabel('ridge index');
 ylabel('Neff');
 legend('TE');

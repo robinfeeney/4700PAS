@@ -53,7 +53,7 @@ end
 % Compute and plot contours
 c = surf(x,y,real(transpose(mode)), 'linestyle','none');
 %shading interp
-% cmap = colormap;
+% cmap = colormap; commented all this out for surf function
 % ii = 1;
 % while (ii < length(c))
 %  level = c(1,ii);

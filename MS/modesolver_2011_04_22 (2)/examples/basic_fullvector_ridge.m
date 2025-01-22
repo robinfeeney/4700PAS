@@ -28,11 +28,11 @@ for i = 1:10 %loop to help adjust ridge halfwidth
     lambda = 1.55;      % vacuum wavelength
     nmodes = 1;         % number of modes to compute
     
-    [x,y,xc,yc,nx,ny,eps,edges] = waveguidemesh([n1,n2,n3],[h1,h2,h3],rh,rw(i),side,dx,dy); 
+    [x,y,xc,yc,nx,ny,eps,edges] = waveguidemesh([n1,n2,n3],[h1,h2,h3],rh,rw(i),side,dx,dy); %passing in rw(i) instead of just rw
     
     % First consider the fundamental TE mode:
     
-    [Hx,Hy,neffTE(i)] = wgmodes(lambda,n2,1,dx,dy,eps,'000A');
+    [Hx,Hy,neffTE(i)] = wgmodes(lambda,n2,1,dx,dy,eps,'000A'); %neffTE(i) instead of neff
     
     fprintf(1,'neff = %.6f\n',neff);
 
