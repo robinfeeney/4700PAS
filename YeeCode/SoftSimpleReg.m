@@ -32,6 +32,7 @@ lambda = c_c/f;
 
 xMax{1} = 20e-6; %Total distance
 nx{1} = 200; %Number of times distance should update
+nx{2} = 400;
 ny{1} = 0.75*nx{1}; %setting height to be 75 percent of width
 
 
@@ -62,7 +63,7 @@ Plot.off = 0;
 Plot.pl = 0;
 Plot.ori = '13';
 Plot.N = 100;
-Plot.MaxEz = 1.1;
+Plot.MaxEz = 5;
 Plot.MaxH = Plot.MaxEz/c_eta_0;
 Plot.pv = [0 0 90];
 Plot.reglim = [0 xMax{1} 0 yMax];
@@ -72,6 +73,10 @@ bc{1}.NumS = 1; %Setting of values for boundary conditions
 bc{1}.s(1).xpos = nx{1}/(4) + 1; % bc.s(1) is setting the source
 bc{1}.s(1).type = 'ss'; % setting the type of source
 bc{1}.s(1).fct = @PlaneWaveBC; %Setting function of source to be PlaneWaveBC
+
+% bc{1}.s(2).xpos = floor(nx{1}/(3)) + 1; % bc.s(2) is setting the source
+% bc{1}.s(2).type = 'ss'; % setting the type of source
+% bc{1}.s(2).fct = @PlaneWaveBC; %Setting function of source to be PlaneWaveBC
 % mag = -1/c_eta_0;
 mag = 1;
 phi = 0;
@@ -83,6 +88,7 @@ s = 0;
 y0 = yMax/2;
 sty = 1.5*lambda;
 bc{1}.s(1).paras = {mag,phi,omega,betap,t0,st,s,y0,sty,'s'};
+%bc{1}.s(2).paras = {mag,phi,omega,betap,t0,st,s,y0/2,sty,'s'};
 
 Plot.y0 = round(y0/dx);
 

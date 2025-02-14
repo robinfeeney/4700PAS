@@ -247,6 +247,12 @@ for i = 1:nSteps
             
             Hy{k}(bc{k}.s(1).xpos,:) = Hy{k}(bc{k}.s(1).xpos,:) + dt/ds/c_mu_0*Einc;
             Ez{k}(bc{k}.s(1).xpos-1,:) = Ez{k}(bc{k}.s(1).xpos-1,:) - dt/ds/c_eps_0/c_eta_0*Eincp;
+
+            % Einc = bc{k}.s(2).fct(yC{k},i,t,bc{k}.s(2).paras);
+            % Eincp = bc{k}.s(2).fct(yC{k},i,t-ds/c_c/2,bc{k}.s(2).paras);
+            % 
+            % Hy{k}(bc{k}.s(2).xpos,:) = Hy{k}(bc{k}.s(2).xpos,:) + dt/ds/c_mu_0*Einc;
+            % Ez{k}(bc{k}.s(2).xpos-1,:) = Ez{k}(bc{k}.s(2).xpos-1,:) - dt/ds/c_eps_0/c_eta_0*Eincp;
             
         end
         
